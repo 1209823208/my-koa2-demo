@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/posts.css">
+</head>
+
+<body class="center">
+    <div><label>标题：</label><input type="text" name="title" value="<%= title%>" /></div>
+    <div><label>内容：</label><textarea name="content" cols="42" rows="10"><%= content%></textarea></div>
+    <div class="submit">save</div>
+    <script>
+        $('.submit').click(function () {
+            let title =  $('input[name="title"]').val(),
+                content = $('textarea[name="content"]').val();
+            if (title === '') {
+                alert('请输入title');
+            } else if (content === '') {
+                alert('请输入content');
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/posts/edit/<%=id%>",
+                    data: {
+                        title: title,
+                        content: content
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log('data', data);
+                        if (data.code == 200) {
+                            window.location.href = "/posts"
+                        }
+                    },
+                    error: function (error) {
+                        console.log('error', error);
+                    }
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>

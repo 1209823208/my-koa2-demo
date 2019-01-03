@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>文章</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/posts.css">
+</head>
+
+<body class="center">
+    <div>
+        <% if (postCount==0) { %>
+        <a href="/posts/add">go add page </a>
+        <% }else { %>
+        <ul class="posts">
+            <% posts.forEach(function(res){ %>
+            <li>
+                <div class="author">
+                    <span title="<% res.name%>"><a href="">author:
+                            <%= res.name%></a></span>
+                    <span>评论数:
+                        <%= res.comments%></span>
+                    <span>浏览数:
+                        <%= res.pv%></span>
+                </div>
+                <div class="comment_pv">
+                    <span>
+                        <%= res.comment%></span>
+                </div>
+                <a href="/posts/edit/<%= res.id%>">
+                    <div class="title">
+                        <%- res.title%>
+                    </div>
+                    <div class="content">
+                        <%- res.content%>
+                    </div>
+                </a>
+                <div onclick="deleteHandle('<%= res.id%>')">delete</div>
+            </li>
+            <% }); %>
+        </ul>
+        <% } %>
+    </div>
+    <script>
+        function deleteHandle(id) {
+            console.log('id', id);
+            $.ajax({
+                type: "GET",
+                url: "/posts/delete",
+                data: {
+                    id
+                },
+                dataType: "json",
+                success: function (data) {
+                    console.log('data', data);
+                    if (data.code == 200) {
+                        window.location.href = "/posts"
+                    }
+                },
+                error: function (error) {
+                    console.log('error', error);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
