@@ -3,7 +3,10 @@
 # dependencies
 /node_modules
 /app/node_modules
+/app/package-lock.json
 /my-app-front/node_modules
+/my-app-front/package-lock.json
+
 /.pnp
 .pnp.js
 
