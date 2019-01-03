@@ -1,0 +1,81 @@
+.page-search-place{
+    width:100%;
+    height:100%;
+    background-color: #f5f5f5;
+}
+.page-search-place header{
+    background-color: #3190e8;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1.95rem;
+    justify-content:space-between;
+    color: #ffffff;
+    padding:0 5px;
+    a{
+        right: .4rem;
+        font-size: .6rem;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.main-content{
+    padding-top: 2.35rem;
+    .search-content{
+        background-color: #fff;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        padding-top: .4rem;
+        .search-detail{
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            input{
+                border: 1px solid #e4e4e4;
+                padding: 0 .3rem;
+                font-size: .65rem;
+                color: #333;
+                border-radius: .1rem;
+                margin-bottom: .4rem;
+                width: 100%;
+                height: 1.4rem;
+            }
+            button{
+                background-color: #3190e8;
+                font-size: .65rem;
+                color: #fff;
+                border-radius: .1rem;
+                margin-bottom: .4rem;
+                width: 100%;
+                height: 1.4rem;
+            }
+        }
+    }
+    .history-search{
+        margin-top: 0.4rem;
+        background-color: #ffffff;
+        font: .475rem/.8rem Microsoft YaHei;
+        h4{
+            border-top: 1px solid #e4e4e4;
+            border-bottom: 1px solid #e4e4e4;
+            padding: 0.4rem 0.5rem;
+            font: .6rem/.8rem Microsoft YaHei;
+            margin: 0;
+        }
+        li{
+            margin: 0 auto;
+            padding: 0.65rem;
+            border-bottom: 1px solid #e4e4e4;
+        }
+        .no-message{
+            margin: 0 auto;
+            padding: 0.65rem;
+            border-bottom: 1px solid #e4e4e4;
+            text-align: center;
+        }
+    }
+}
