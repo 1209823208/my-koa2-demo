@@ -23,6 +23,10 @@ const SearchPlace = Loadable({
 	loader: () => import('./pages/searchPlace'),
 	loading: Loading,
 });
+const CategoryList = Loadable({
+	loader:()=>import('./pages/categoryList'),
+	loading:Loading
+})
 
 export const route_list = (
     <Switch>
@@ -30,6 +34,7 @@ export const route_list = (
         <Route path="/home" component={Home} />
         <Route path="/list" component={List} />
         <Route path="/search-place" component={SearchPlace} />
+        <Route path="/category-list" component={CategoryList} />
 
         {/* 路由从上向下匹配，匹配成功 break,匹配不到就执行最后一行ErrorPage页面 */}
         <Route component={ErrorPage} />

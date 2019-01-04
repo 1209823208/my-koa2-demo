@@ -56,6 +56,7 @@ class CityHandle extends AddressComponent {
     async getCityName(ctx) {
         try {
             const cityInfo = await this.guessPosition(ctx)
+            console.log('cityInfo',cityInfo)
             /*
             汉字转换成拼音
              */

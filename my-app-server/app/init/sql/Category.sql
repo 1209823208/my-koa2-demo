@@ -26,7 +26,7 @@ CREATE TABLE `Category` (
   `name` varchar(20) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=utf8;
 INSERT INTO Category set count=0,id=207,image_url="44545a0518aab93817cfe611e88bb702png",level=1,name="全部快餐便当",parent_id=0;
 INSERT INTO Category set count=0,id=265,image_url="be84bc4d7cf12deee9115b16eb099302png",level=2,name="简餐",parent_id=207;
 INSERT INTO Category set count=0,id=209,image_url="66b78c0e7099c278977298d7c6042c80png",level=2,name="盖浇饭",parent_id=207;

@@ -60,7 +60,7 @@ export default class AddressComponent {
                     resolve(cityInfo)
                 } else {
                     console.log('定位失败', result)
-                    reject('定位失败');
+                    resolve({ lat: 31.18826, lng: 121.43687, city: '上海' });
                 }
             // } catch (err) {
             //     reject(err);
