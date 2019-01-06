@@ -1,6 +1,6 @@
 console.log('111',process.env);
-const UrlPrefix = 'http://localhost:3001';
-if(process.env==='production'){
+let UrlPrefix = 'http://localhost:3001';
+if(process.env.NODE_ENV==='production'){
     UrlPrefix = 'http://47.99.55.188:3001';
 }
 export const environment = {

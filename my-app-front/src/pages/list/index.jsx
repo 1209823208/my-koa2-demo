@@ -183,9 +183,7 @@ export default class ShopList extends React.Component {
                   preventRepeatReuqest:true,
                   offset:offset+1
                 },()=>{
-                    setTimeout(()=>{
-                      _this.getShopList()
-                    },1000)
+                  _this.getShopList()
                 })
              
             }
@@ -208,9 +206,7 @@ export default class ShopList extends React.Component {
           preventRepeatReuqest:true,
           offset:offset+1
         },()=>{
-            setTimeout(()=>{
-              this.getShopList()
-            },1000)
+          this.getShopList()
         })
       }
     }
