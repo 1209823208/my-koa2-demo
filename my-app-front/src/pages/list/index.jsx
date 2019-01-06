@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './index.scss'
 import ShopService from '../../service/shop-service'
 import CityService from '../../service/city-service'
@@ -21,6 +22,7 @@ export default class ShopList extends React.Component {
         is_all:false,
         latitude:31.32062,
         longitude:121.389028,
+        pois:null
      }
     }
     componentWillMount(){
@@ -49,16 +51,20 @@ export default class ShopList extends React.Component {
     // 根据地理位置获取地址信息
     async getPois(parsed){
       const pois =  await CityModel.getPois(parsed);
+      this.setState({
+        pois
+      })
       let historySearch = [];
       if(localStorage.getItem('historySearch')){
         historySearch = JSON.parse(localStorage.getItem('historySearch'));
         if(historySearch.length>10){
           historySearch.shift()
         }
-        for(let val of historySearch){
-          if(val.address!==pois.address){
-            historySearch.push(pois)
-          }
+        let flag = historySearch.some((val)=>{
+          return val.address===pois.address
+        })
+        if(!flag){
+           historySearch.push(pois)
         }
         localStorage.setItem('historySearch',JSON.stringify(historySearch))
       }else{
@@ -172,13 +178,16 @@ export default class ShopList extends React.Component {
             if(_this.state.preventRepeatReuqest ||_this.state.is_all){
               return;
             }else{
-              let offset = _this.state.offset;
-              _this.setState({
-                preventRepeatReuqest:true,
-                offset:offset+1
-              },()=>{
-                _this.getShopList()
-              })
+                let offset = _this.state.offset;
+                _this.setState({
+                  preventRepeatReuqest:true,
+                  offset:offset+1
+                },()=>{
+                    setTimeout(()=>{
+                      _this.getShopList()
+                    },1000)
+                })
+             
             }
         }
     });
@@ -199,7 +208,9 @@ export default class ShopList extends React.Component {
           preventRepeatReuqest:true,
           offset:offset+1
         },()=>{
-          this.getShopList()
+            setTimeout(()=>{
+              this.getShopList()
+            },1000)
         })
       }
     }
@@ -248,10 +259,13 @@ export default class ShopList extends React.Component {
         categoryDom = this.state.categoryData.map((item,index)=>{
           return(
             <li key={index}>
-              <a href="javascript:void(0)">
-                <img src={ImgPrefix+item.image_url}/>
-                <span>{item.title}</span>
-              </a>
+              <Link to={{
+                pathname: "/category-list",
+                search: `?geohash=${this.state.latitude},${this.state.longitude}&&title=${item.title}`,
+              }}>
+                  <img src={ImgPrefix+item.image_url}/>
+                  <span>{item.title}</span>
+                </Link>
             </li>
           )
         })
@@ -287,8 +301,8 @@ export default class ShopList extends React.Component {
       return (
         <div className="page-list">
           <header>
-            <a href="javascript:void(0)" className="search-btn"><i className="fa fa-search" aria-hidden="true"></i></a>
-            <span className="current-place">上海宝山</span>
+            <a href="/" className="search-btn"><i className="fa fa-search" aria-hidden="true"></i></a>
+            <span className="current-place">{this.state.pois&&this.state.pois.name?this.state.pois.name:''}</span>
             <a href="javascript:void(0)" className="login-register-btn">登录|注册</a>
           </header>
           <nav className="category-list">

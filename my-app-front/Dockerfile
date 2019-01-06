@@ -17,7 +17,7 @@ FROM nginx:1.13.12
 WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -y curl build-essential && curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 RUN npm install
 COPY . .
@@ -30,4 +30,4 @@ RUN cp -r /usr/src/app/build/* . && rm -rf /usr/src/app/
 RUN rm /etc/nginx/conf.d/default.conf
 ADD app.conf /etc/nginx/nginx.conf
 RUN echo "Asia/Shanghai" > /etc/timezone && rm /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
-EXPOSE 4200
+EXPOSE 3000

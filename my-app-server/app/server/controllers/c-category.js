@@ -14,9 +14,14 @@ class Category extends BaseComponent{
         }
     }
     async getCategories(ctx){
-        let resData;
+        let resData, level = ctx.request.query.level,parent_id=ctx.request.query.parent_id;
         try{
-            resData = await CategoryModel.getCategories()
+            if(level){
+                resData = await CategoryModel.getCategories(level)
+            }else{
+                resData = await CategoryModel.getSecondCategories(parent_id)
+            }
+           
         }catch(err){
             resData = {
                 status: 0,

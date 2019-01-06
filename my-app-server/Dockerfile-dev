@@ -27,5 +27,5 @@ RUN npm install
 
 # RUN echo $(find server -name index.js)
 EXPOSE 3001
-ENTRYPOINT ["npm", "run", "start_pro"]
+ENTRYPOINT ["npm", "run", "start_dev"]
 # ENTRYPOINT ["/var/my-app-service/run.sh"]

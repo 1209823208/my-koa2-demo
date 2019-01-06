@@ -45,4 +45,4 @@ app.use(views(path.join(__dirname, './views'), {
 // })
 // 初始化路由中间件
 app.use(routers.routes())
-app.listen(3002)
+app.listen(3001)

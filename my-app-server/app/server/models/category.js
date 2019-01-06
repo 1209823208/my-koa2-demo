@@ -38,8 +38,12 @@ class Category {
         let _sql = `select * from Category where id="${id}";`
         return query(_sql)
     }
-    async getCategories(){
-        let _sql = `select * from Category;`
+    async getCategories(level){
+        let _sql = `select * from Category where level = ${level};`
+        return query(_sql) 
+    }
+    async getSecondCategories(parent_id){
+        let _sql = `select * from Category where parent_id = ${parent_id};`
         return query(_sql) 
     }
 }

@@ -16,9 +16,12 @@
     font-size: 0.65rem;
     display: flex;
     padding: 0px 0.5rem;
-    >a{
+    >.goBack{
         display: block;
         width: 1rem;
+        >i{
+            color:#fff
+        }
     }
     >span{
         display: block;
@@ -29,13 +32,201 @@
 .oprate-type{
     display: flex;
     justify-content: space-around;
-    padding-top: 2.1rem;
+    padding-top: 2rem;
     background-color: #fff;
     border-bottom: 0.1rem solid #e4e4e4;
-    >span{
+    >.sort_item{
         border-left: 1px solid #e4e4e4;
         width: 33.3%;
         text-align: center;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+        height: 1rem;
+        line-height:1rem;
+        >.category_title{
+            position: relative;
+            z-index: 13;
+        }
+        >.category_container{
+            width: 100%;
+            position: absolute;
+            display: flex;
+            top: 3rem;
+            left: 0;
+            border-top: .025rem solid #e4e4e4;
+            background-color: #fff;
+            .category_left{
+                flex: 1;
+                background-color: #f1f1f1;
+                height: 16rem;
+                overflow-y: auto;
+                .category_left_li{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 0.5rem;
+                    line-height: 1.8rem;
+                    font-size: 0.5rem;
+                    &.category_active{
+                        background-color: #ffffff
+                    }
+                    .icon{
+                        width: .8rem;
+                        height: .8rem;
+                        vertical-align: middle;
+                        margin-right: .2rem;
+                    }
+                    .num-container{
+                        span{
+                            background-color: #ccc;
+                            font-size: .5rem;
+                            color: #fff;
+                            padding: 0 .1rem;
+                            border: .025rem solid #ccc;
+                            border-radius: .8rem;
+                            vertical-align: middle;
+                            margin-right: .4rem;
+                        }
+                        i{
+                            color: #ccc; 
+                        }
+                    }
+                }
+            }
+            .category_right{
+                flex: 1;
+                background-color: #fff;
+                padding-left: .5rem;
+                height: 16rem;
+                overflow-y: auto;
+                .category_right_li{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 0.5rem;
+                    line-height: 1.8rem;
+                    font-size: 0.5rem;
+                    border-bottom: .025rem solid #e4e4e4;
+                    color: #333;
+                }
+            }
+        }
+        >.sort-container{
+            width: 100%;
+            position: absolute;
+            display: flex;
+            top: 3rem;
+            left: 0;
+            border-top: .025rem solid #e4e4e4;
+            background-color: #fff;
+            ul.sort-list-container{
+                width:100%;
+                .sort-list-li{
+                    height: 2.5rem;
+                    display: flex;
+                    align-items: center;
+                    .sort-select{
+                        margin:0
+                    }
+                    &.select{
+                       color: #3190e8
+                    }
+                }
+            }
+            .icon{
+                width: .7rem;
+                height: .7rem;
+                margin: 0 .3rem 0 .8rem;
+            }
+            .sort-select{
+                line-height: 2.5rem;
+                -ms-flex: auto;
+                flex: auto;
+                text-align: left;
+                text-indent: .25rem;
+                border-bottom: .025rem solid #e4e4e4;
+
+                display: flex;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+        }
+        >.filter-container{
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 10.6rem;
+            background-color: #ffffff;
+            width: 100%;
+            position: absolute;
+            display: flex;
+            top: 3rem;
+            left: 0;
+            border-top: .025rem solid #e4e4e4;
+            font-size:0.5rem;
+            .filter_header_style{
+                font-size: .4rem;
+                color: #333;
+                line-height: 1.5rem;
+                height: 1.5rem;
+                text-align: left;
+                padding-left: .5rem;
+                background-color: #fff;
+                margin: 0;
+                font-size:0.5rem;
+            }
+            .filter_ul{
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                padding: 0 .5rem;
+                background-color: #fff;
+                .filter_li{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: .025rem solid #eee;
+                    width: 4.7rem;
+                    height: 1.4rem;
+                    margin-right: .25rem;
+                    border-radius: .125rem;
+                    padding: 0 .25rem;
+                    margin-bottom: .25rem;
+                    &.active{
+                        color: #3190e8
+                    }
+                }
+            }
+            .btns{
+                display: flex;
+                justify-content: space-between;
+                background-color: #f1f1f1;
+                width: 100%;
+                padding: .3rem .2rem;
+                >button{
+                    width: 50%;
+                    height: 1.8rem;
+                    font-size: .8rem;
+                    line-height: 1.8rem;
+                    border-radius: .2rem;
+                    &:nth-of-type(1){
+                        background-color: #fff;
+                        margin-right: .5rem;
+                        border: .025rem solid #fff;
+                    }
+                    &:nth-of-type(2){
+                        background-color: #56d176;
+                        color: #fff;
+                        border: .025rem solid #56d176;
+                    }
+                }
+            }
+        }
+        .oprate-item{
+            display: none;
+            z-index:999;
+            &.active{
+                display:flex;
+            }
+        }
     }
+    
 }

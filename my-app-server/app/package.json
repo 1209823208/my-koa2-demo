@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js"
+    "start": "NODE_ENV=localhost node server/index.js",
+    "start_dev": "NODE_ENV=development node server/index.js",
+    "start_pro": "NODE_ENV=production node server/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -28,7 +28,6 @@ export default class Home extends React.Component {
     }
     async getCityAllInfo(){
      const allData =  await CityModel.getCityAllInfo()
-     console.log('allData',allData)
      this.setState({
       currentCityInfo:allData.currentCityInfo,
       hotCityInfo:allData.hotCityInfo,
