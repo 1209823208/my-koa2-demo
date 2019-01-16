@@ -17,6 +17,25 @@ function getHeader() {
     }
     return authHeader;
 }
+// axios.defaults.baseURL = 'https://api.example.com';这个可以替换environment.UrlPrefix
+
+// 添加一个请求拦截器
+axios.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    console.log('request--config');
+    return config;
+  }, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  });
+// 添加一个响应拦截器
+axios.interceptors.response.use(function (response) {
+    console.log('response');
+    return response;
+  }, function (error) {
+    // Do something with response error
+    return Promise.reject(error);
+  });
 export default class MUtil {
     get(url, params = {}, withCredentials = true) {
         return axios.get(_URL(url), {
